@@ -46,18 +46,18 @@ export default function Products() {
 
   return (
     <>
-      <Grid container xs={12} direction="row">
+      <Grid container direction="row">
         {item && (
           <Alert onClose={() => setItem(null)}>Yey! You got {item}.</Alert>
         )}
       </Grid>
-      <Grid container xs={12} direction="row">
+      <Grid container direction="row">
         {choices.map((choice, index) => (
-          <Grid key={index} item xs>
+          <Grid key={index} item>
             <Card sx={{ maxWidth: 345 }}>
               <CardMedia component="img" height="140" image={choice.link} />
               <CardContent>
-                {choice.name} - {formatMoney(choice.value)}
+                {`${choice.name} - ${formatMoney(choice.value)}`}
               </CardContent>
               <CardActions>
                 <Button
@@ -65,6 +65,7 @@ export default function Products() {
                   size="small"
                   disabled={balance < choice.value}
                   onClick={handleSelectProduct(choice)}
+                  aria-label={`Select ${choice.name}`}
                 >
                   Select
                 </Button>

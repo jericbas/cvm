@@ -20,14 +20,14 @@ export default function Balance() {
   return (
     <>
       <Grid container m={3} direction="row" rowSpacing={2}>
-        Balance: <strong>{formatMoney(balance)}</strong>
+        Balance: <strong data-testid="balance">{formatMoney(balance)}</strong>
       </Grid>
 
       <Grid container m={3} direction="row" rowSpacing={2}>
         {denominations.map((denomination) => (
-          <Grid item xs={2}>
+          <Grid key={denomination} item xs={2}>
             <Button onClick={handleAddBalance(denomination)}>
-              <Avatar key={denomination} sx={{ width: 56, height: 56 }}>
+              <Avatar sx={{ width: 56, height: 56 }}>
                 {formatMoney(denomination)}
               </Avatar>
             </Button>
